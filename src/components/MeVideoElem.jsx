@@ -14,13 +14,15 @@ const MeVideoElem = () => {
     console.log({ stream });
   }, [stream]);
   return (
-    <video
-      style={{ width: "50%" }}
-      ref={videoRef}
-      autoPlay
-      muted
-      playsInline
-    ></video>
+    <div className="bg-gray-300 rounded-lg shadow-lg overflow-hidden w-[50%]">
+      <video
+        className="w-full h-full object-cover"
+        ref={videoRef}
+        autoPlay
+        muted
+        playsInline
+      ></video>
+    </div>
   );
 };
 

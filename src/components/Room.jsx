@@ -1,5 +1,3 @@
-import "../App.css";
-
 import {
   HuddleClientProvider,
   getHuddleClient,
@@ -44,6 +42,7 @@ function Room() {
           <button onClick={() => huddleClient.disableWebcam()}>
             Disable Webcam
           </button>
+          <button onClick={() => huddleClient.disableMic()}>Disable mic</button>
           <button onClick={() => huddleClient.allowAllLobbyPeersToJoinRoom()}>
             allowAllLobbyPeersToJoinRoom()
           </button>

@@ -19,7 +19,10 @@ export default function Hero() {
             <p className="opacity-70" style={{ color: "hsl(218, 81%, 85%)" }}>
               Easily manage and setup meeting with the applicants at one place.
             </p>
-            <a href="/create" className="flex justify-center items-center">
+            <a
+              href="/create"
+              className="flex lg:block justify-center items-center"
+            >
               <div class="w-[250px] mt-[30px] flex items-center bg-white shadow rounded-lg py-4 px-8">
                 <p class="m-auto inset-0 text-xl font-semibold leading-7 text-center text-gray-800">
                   Get Started

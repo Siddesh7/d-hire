@@ -1,10 +1,10 @@
 import { useHuddleStore } from "@huddle01/huddle01-client/store";
-import PeerVideoAudioElem from "./PeerVideoAudioElem";
-import MeVideoElem from "./MeVideoElem";
+import PeerVideoAudioElem from "../components/PeerVideoAudioElem";
+import MeVideoElem from "../components/MeVideoElem";
 import { useParams } from "react-router-dom";
 import { useAccount } from "wagmi";
 import { useEffect } from "react";
-import { getHuddleClient } from "@huddle01/huddle01-client/*";
+import { getHuddleClient } from "@huddle01/huddle01-client";
 
 function Room(props) {
   const { id } = useParams();

@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./App.css";
 import "./index.css";
-import Room from "./components/Room";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import {
@@ -13,7 +12,9 @@ import { WagmiConfig, createClient } from "wagmi";
 import { polygonMumbai, goerli } from "wagmi/chains";
 import { ConnectKitProvider, getDefaultClient } from "connectkit";
 import Hero from "./components/Hero";
-import HuddleIframeWindow from "./components/Room";
+
+import Room from "./pages/Room";
+import UserPage from "./pages/UserPage";
 
 const chains = [goerli, polygonMumbai];
 const client = createClient(
@@ -35,7 +36,7 @@ root.render(
             <Navbar />
             <Routes>
               <Route path="/" element={<Hero />}></Route>
-              <Route path="/wallet" element={<HuddleIframeWindow />}></Route>
+              <Route path="/:wallet" element={<UserPage />}></Route>
               <Route path="/call/:id" element={<Room />} />
             </Routes>
           </BrowserRouter>

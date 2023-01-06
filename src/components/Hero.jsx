@@ -2,7 +2,7 @@ import Lottie from "react-lottie";
 import * as HeroAnimation from "../assets/hero.json";
 export default function Hero() {
   return (
-    <div className="px-6 py-12 lg:py-24 md:px-12 text-center lg:text-left h-[90vh]">
+    <div className="px-6 py-12 lg:py-24 md:px-12 text-center lg:text-left h-[80vh]">
       <div className="container mx-auto text-gray-800">
         <div className="grid lg:grid-cols-[3fr,1fr] gap-12 flex items-center">
           <div className="mt-12 lg:mt-0" style={{ zIndex: 10 }}>

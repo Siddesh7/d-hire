@@ -16,6 +16,7 @@ import Hero from "./components/Hero";
 import Room from "./pages/Room";
 import UserPage from "./pages/UserPage";
 import Footer from "./components/Footer";
+import EditManager from "./components/editManagers";
 
 const chains = [goerli, polygonMumbai];
 const client = createClient(
@@ -39,6 +40,7 @@ root.render(
               <Route path="/" element={<Hero />}></Route>
               <Route path="/:wallet" element={<UserPage />}></Route>
               <Route path="/call/:id" element={<Room />} />
+              <Route path="/hiring/:id" element={<EditManager />} />
             </Routes>
             <Footer />
           </BrowserRouter>

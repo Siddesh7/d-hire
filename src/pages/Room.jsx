@@ -48,6 +48,7 @@ function Room(props) {
         <button onClick={() => huddleClient.allowAllLobbyPeersToJoinRoom()}>
           allowAllLobbyPeersToJoinRoom()
         </button>
+
         <button
           onClick={() =>
             // will not work in localhost
@@ -58,6 +59,7 @@ function Room(props) {
         >
           startRecording()
         </button>
+
         <button onClick={() => huddleClient.stopRecording({ ipfs: true })}>
           stopRecording()
         </button>

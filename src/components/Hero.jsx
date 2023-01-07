@@ -23,11 +23,11 @@ export default function Hero() {
               href="/create"
               className="flex lg:block justify-center items-center"
             >
-              <div class="w-[250px] mt-[30px] flex items-center bg-white shadow rounded-lg py-4 px-8">
-                <p class="m-auto inset-0 text-xl font-semibold leading-7 text-center text-gray-800">
+              <div className="w-[250px] mt-[30px] flex items-center bg-white shadow rounded-lg py-4 px-8">
+                <p className="m-auto inset-0 text-xl font-semibold leading-7 text-center text-gray-800">
                   Get Started
                 </p>
-                <div class="">
+                <div className="">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"

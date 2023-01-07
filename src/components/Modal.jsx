@@ -1,4 +1,3 @@
-import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -6,7 +5,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Backdrop } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useAccount, useEnsAddress } from "wagmi";
 
 const style = {
   position: "absolute",
@@ -21,6 +21,21 @@ const style = {
 };
 
 export default function TransitionsModal({ isOpen, handleClose }) {
+  const { address } = useAccount();
+
+  const [createJob, setCreateJob] = useState({
+    candidateAddress: "",
+    Company: "",
+    Role: "",
+    manager: address,
+  });
+
+  const { data: EnsName } = useEnsAddress({ name: createJob.candidateAddress });
+
+  useEffect(() => {
+    setCreateJob({ ...createJob, candidateAddress: EnsName });
+    console.log(createJob);
+  }, [EnsName]);
   return (
     <div>
       <Dialog
@@ -30,11 +45,11 @@ export default function TransitionsModal({ isOpen, handleClose }) {
           backdropFilter: "blur(10px)",
         }}
       >
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Start a new hiring procedure</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+            Please specify the ENS/Address of the candidate and other details
+            here.
           </DialogContentText>
           <TextField
             autoFocus
@@ -44,6 +59,9 @@ export default function TransitionsModal({ isOpen, handleClose }) {
             type="text"
             fullWidth
             variant="standard"
+            onChange={(e) => {
+              setCreateJob({ ...createJob, candidateAddress: e.target.value });
+            }}
           />
           <TextField
             autoFocus
@@ -53,6 +71,9 @@ export default function TransitionsModal({ isOpen, handleClose }) {
             type="text"
             fullWidth
             variant="standard"
+            onChange={(e) => {
+              setCreateJob({ ...createJob, Company: e.target.value });
+            }}
           />
           <TextField
             autoFocus
@@ -62,21 +83,30 @@ export default function TransitionsModal({ isOpen, handleClose }) {
             type="text"
             fullWidth
             variant="standard"
+            onChange={(e) => {
+              setCreateJob({ ...createJob, Role: e.target.value });
+            }}
           />
-
           <TextField
             autoFocus
             margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
+            disabled
+            label="Manager"
+            type="text"
             fullWidth
             variant="standard"
+            value={createJob.manager}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button
+            onClick={() => {
+              console.log(createJob);
+            }}
+          >
+            Create
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

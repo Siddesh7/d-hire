@@ -4,6 +4,9 @@ import React, { useCallback, useEffect, useRef } from "react";
 const PeerVideoAudioElem = ({ peerIdAtIndex }) => {
   const videoRef = useRef(null);
   const audioRef = useRef(null);
+  const displayName = useHuddleStore(
+    (state) => state.peers[peerIdAtIndex].displayName
+  );
 
   const peerCamTrack = useHuddleStore(
     useCallback(
@@ -56,13 +59,14 @@ const PeerVideoAudioElem = ({ peerIdAtIndex }) => {
   }, [peerMicTrack]);
 
   return (
-    <div style={{ width: "50%" }}>
+    <div className="bg-gray-300 rounded-lg shadow-lg overflow-hidden w-full h-[280px] relative">
+      <p className=""> {displayName}</p>
       <video
         ref={videoRef}
+        className="w-full object-cover"
         muted
         autoPlay
         playsInline
-        style={{ width: "100%" }}
       />
       <audio ref={audioRef} autoPlay playsInline controls={false}></audio>
     </div>

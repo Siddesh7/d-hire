@@ -26,7 +26,7 @@ const client = createClient(
     chains,
   })
 );
-const huddleClient = getHuddleClient(
+export const huddleClient = getHuddleClient(
   "07c420f6af49358778b3b1a040f711bf88144d15de50766409941663c64689c9"
 );
 const root = ReactDOM.createRoot(document.getElementById("root"));

@@ -8,6 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useEffect, useState } from "react";
 import { useAccount, useEnsAddress } from "wagmi";
 import axios from "axios";
+import { WindowRounded } from "@mui/icons-material";
 
 const style = {
   position: "absolute",
@@ -50,11 +51,11 @@ export default function TransitionsModal({ isOpen, handleClose }) {
       .post(`${process.env.REACT_APP_HOST}/api/create`, createJob)
       .then((response) => {
         console.log(response.data);
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
       });
-    window.location.reload();
   };
   return (
     <div>

@@ -16,6 +16,7 @@ import { v4 as uuid } from "uuid";
 import { useAccount, useEnsAddress, useEnsName } from "wagmi";
 import axios from "axios";
 export default function EditManager({ wallet, company, role, url }) {
+  console.log(wallet, company, role, url);
   const { data: ENSName } = useEnsName({
     address: wallet,
   });
@@ -69,6 +70,7 @@ export default function EditManager({ wallet, company, role, url }) {
       .then((response) => response.json())
       .then((data) => {
         setAccess(data);
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -89,10 +91,12 @@ export default function EditManager({ wallet, company, role, url }) {
       interview: data,
     };
     console.log(dataToBeSent);
+
     axios
       .post(`${process.env.REACT_APP_HOST}/api/jobmanager`, dataToBeSent)
       .then((response) => {
         console.log(response);
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
@@ -157,6 +161,7 @@ export default function EditManager({ wallet, company, role, url }) {
                               const arr = [...data];
 
                               arr[index] = { ...arr[index], dateTime: date };
+
                               setData(arr);
                             }}
                             renderInput={(params) => <TextField {...params} />}

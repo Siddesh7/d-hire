@@ -1,4 +1,5 @@
 const express = require("express");
+const { NotifScheduler } = require("../cronHandlerPush");
 const JobRequests = require("../model/createJobReq");
 const jobManager = require("../model/jobManager");
 
@@ -21,6 +22,8 @@ router.get("/create", async (req, res) => {
     try {
       const jobsApplied = await JobRequests.find({
         candidateAddress: req.query.wallet,
+        Company: req.query.company,
+        Role: req.query.role,
       });
       res.send(jobsApplied);
     } catch (error) {
@@ -42,10 +45,17 @@ router.get("/create", async (req, res) => {
 router.post("/jobmanager", async (req, res) => {
   // Create a new alert
   const jobs = new jobManager(req.body);
+
   console.log(req.body);
   try {
     await jobs.save();
     res.send(jobs);
+    if (req.body.interview) {
+      let dt = req.body.interview;
+      dt.forEach((element) => {
+        NotifScheduler(element.interviewer, element.dateTime);
+      });
+    }
   } catch (error) {
     res.send(error);
   }

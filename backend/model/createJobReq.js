@@ -13,6 +13,9 @@ const jobRequest = new mongoose.Schema({
   manager: {
     type: String,
   },
+  managingUrl: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("jobRequest", jobRequest);

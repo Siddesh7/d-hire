@@ -7,6 +7,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useEffect, useState } from "react";
 import { useAccount, useEnsAddress } from "wagmi";
+import axios from "axios";
 
 const style = {
   position: "absolute",
@@ -27,15 +28,34 @@ export default function TransitionsModal({ isOpen, handleClose }) {
     candidateAddress: "",
     Company: "",
     Role: "",
-    manager: address,
+    manager: address.toLowerCase(),
+    managingUrl: "",
   });
 
   const { data: EnsName } = useEnsAddress({ name: createJob.candidateAddress });
 
   useEffect(() => {
-    setCreateJob({ ...createJob, candidateAddress: EnsName });
+    if (EnsName) {
+      const ensEquivalent = EnsName.toLowerCase();
+      setCreateJob({
+        ...createJob,
+        candidateAddress: ensEquivalent,
+        managingUrl: `${ensEquivalent}::${createJob.Company}::${createJob.Role}`,
+      });
+    }
     console.log(createJob);
-  }, [EnsName]);
+  }, [EnsName, createJob.Company, createJob.Role]);
+  const handleSubmit = (event) => {
+    axios
+      .post(`${process.env.REACT_APP_HOST}/api/create`, createJob)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    window.location.reload();
+  };
   return (
     <div>
       <Dialog
@@ -100,13 +120,7 @@ export default function TransitionsModal({ isOpen, handleClose }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button
-            onClick={() => {
-              console.log(createJob);
-            }}
-          >
-            Create
-          </Button>
+          <Button onClick={handleSubmit}>Create</Button>
         </DialogActions>
       </Dialog>
     </div>

@@ -41,7 +41,7 @@ root.render(
               <Route path="/" element={<Hero />}></Route>
               <Route path="/:wallet" element={<UserPage />}></Route>
               <Route path="/call/:id" element={<Room />} />
-              <Route path="/hiring/:wallet" element={<Manager />} />
+              <Route path="/manage/:wallet" element={<Manager />} />
             </Routes>
             <Footer />
           </BrowserRouter>

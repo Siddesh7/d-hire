@@ -7,6 +7,7 @@
     "@emotion/styled": "^11.10.5",
     "@huddle01/huddle01-client": "0.0.10",
     "@huddle01/huddle01-iframe": "0.0.8",
+    "@mui/icons-material": "^5.11.0",
     "@mui/lab": "^5.0.0-alpha.114",
     "@mui/material": "^5.11.3",
     "@mui/styled-engine-sc": "^5.11.0",
@@ -14,6 +15,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.2.2",
     "connectkit": "^1.1.1",
     "dayjs": "^1.11.7",
     "ethers": "^5.7.2",
@@ -23,6 +25,7 @@
     "react-lottie": "^1.2.3",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
+    "uuid": "^9.0.0",
     "wagmi": "^0.10.4",
     "web-vitals": "^2.1.4"
   },

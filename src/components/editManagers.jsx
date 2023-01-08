@@ -97,7 +97,6 @@ export default function EditManager({ wallet, company, role, url }) {
       .catch((error) => {
         console.error(error);
       });
-    window.location.reload();
   };
   return (
     <>

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useAccount } from "wagmi";
 import { useEffect } from "react";
 import { getHuddleClient } from "@huddle01/huddle01-client";
+import { Button } from "@mui/material";
 
 function Room(props) {
   const { id } = useParams();
@@ -36,7 +37,23 @@ function Room(props) {
 
   return (
     <div className="h-[90vh]">
-      <button onClick={handleJoin}>Join Room</button>
+      <div className="flex w-[85%] m-auto gap-4 my-[4px]">
+        {" "}
+        <Button variant="contained" onClick={handleJoin}>
+          Join Room
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            huddleClient.startLiveStreaming({
+              platform: "livepeer",
+            });
+          }}
+        >
+          Start Live Streaming!
+        </Button>
+      </div>
+
       <div className="grid grid-cols-2 gap-4 w-[85%] m-auto justify-between">
         {" "}
         <MeVideoElem />

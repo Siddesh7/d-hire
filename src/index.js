@@ -43,7 +43,6 @@ root.render(
               <Route path="/call/:id" element={<Room />} />
               <Route path="/manage/:wallet" element={<Manager />} />
             </Routes>
-            <Footer />
           </BrowserRouter>
         </ConnectKitProvider>
       </HuddleClientProvider>
